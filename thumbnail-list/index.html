@@ -1,0 +1,66 @@
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+</head>
+<body>
+  <div class='container'>
+    <div class='col-sm-5 target'>
+    </div>
+  </div>
+</body>
+
+<script type="text/jsx">
+   // Define a `class`
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="thumbnail">
+      <img src={'http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg'} alt="..."/>
+      <div className="caption">
+        <h3>Thumbnail label</h3>
+        <p>{this.props.desc}</p>
+        <Badge title={this.props.title} number={this.props.number}/>
+        
+      </div>
+    </div>
+    }
+  });
+
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var ThumbnailList = React.createClass({
+    render: function() {
+      var list = this.props.thumbnailData.map(function(thumbnailprops){
+        return <Thumbnail {...thumbnailprops} />
+      });
+      return <div>{list}</div>
+    }
+  });
+
+
+  var options={
+    thumbnailData:[
+      {title:'whatever',
+      number:5,
+      desc:'nothing'
+      },
+      {title:'111whatever',
+      number:51,
+      desc:'nnnnnnothing'
+      }
+    ] 
+  }
+    
+  // React, please render this class
+  var element = React.createElement(ThumbnailList,options);
+
+  // React, after you render this class, please place it in my body tag
+  React.render(element, document.querySelector('.target'));
+</script>
