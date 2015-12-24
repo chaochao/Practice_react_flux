@@ -1,22 +1,22 @@
-var React=require('react');
-var ThumbnailList=require('./Thumbnail-list') 
-var options={
-    thumbnailData:[
-      {title:'whatever',
-      number:5,
-      desc:'nothing',
-      header:"no1"
-      },
-      {title:'111whatever',
-      number:51,
-      desc:'nnnnnnothing',
-      header: 'no2'
-      }
-    ] 
-  }
-    
-  // React, please render this class
-  var element = React.createElement(ThumbnailList,options);
+var React = require('react');
+var ThumbnailList = require('./thumbnail-list');
 
-  // React, after you render this class, please place it in my body tag
-  React.render(element, document.querySelector('.container'));
+var options = {
+  thumbnailData:  [{
+    title: 'Show Courses',
+    number: 120,
+    header: 'Learn React',
+    description: 'test',
+    imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png'
+  },{
+    title: 'Show Courses',
+    number: 25,
+    header: 'Learn Gulp',
+    description: 'test2',
+    imageUrl: 'http://brunch.io/images/others/gulp.png'
+  }]
+};
+
+
+var element = React.createElement(ThumbnailList, options);
+React.render(element, document.querySelector('.container'));
